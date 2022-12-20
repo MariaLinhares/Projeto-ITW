@@ -1,4 +1,5 @@
 $('document').ready(function () {
-    const carousel = new bootstrap.Carousel('#myCarousel', {
-        interval: 10000
+    const carousel = new bootstrap.Carousel('myCarousel', {
+        interval: 10,
     });
+});
