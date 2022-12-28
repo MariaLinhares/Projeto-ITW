@@ -86,13 +86,15 @@
     </div>
     <!-- /ko -->
     <div class="row" data-bind="foreach:records">
-        <div class="card" style="width: 18rem;">
-            <img data-bind="attr:{'src':Photo}" class="card-img-top" alt="...">
-            <div class="card-body" style="text-align: center;">
-                <h5 class="card-title" data-bind="text:Name"></h5>
-                <p class="card-text"></p>
-                <a href="#"><i class="fa-sharp fa-solid fa-eye" style="color: rgb(0, 0, 0);"></i></a>
-                <a href="#"><i class="fa-solid fa-heart" style="color:red"></i></a>
+        <div class="col-12 col-sm-6 col-md-3 mb-3">
+            <div class="card">
+                <img data-bind="attr:{'src':Photo}" class="card-img-top" alt="..." style="height: 200px">
+                <div class="card-body" style="text-align: center;">
+                    <h5 class="card-title" data-bind="text:Name"></h5>
+                    <p class="card-text"></p>
+                    <a href="#"><i class="fa-sharp fa-solid fa-eye" style="color: rgb(0, 0, 0);"></i></a>
+                    <a href="#"><i class="fa-solid fa-heart" style="color:red"></i></a>
+                </div>
             </div>
         </div>
     </div>
