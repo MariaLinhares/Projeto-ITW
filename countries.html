@@ -88,7 +88,12 @@
         <div class="row" data-bind="foreach:records">
             <div class="col-12 col-sm-6 col-md-3 mb-3">
                 <div class="card">
+                    <!-- ko if: Flag-->
                     <img data-bind="attr:{'src':Flag}" class="card-img-top" alt="..." style="height: 200px">
+                    <!-- /ko -->
+                    <!-- ko ifnot: Flag -->
+                    <img src="./?.png" class="card-img-top" alt="Athlete" />
+                    <!-- /ko -->
                     <div class="card-body" style="text-align: center;">
                         <h5 class="card-title" data-bind="text:Name"></h5>
                         <a href="#"><i class="fa-sharp fa-solid fa-eye" style="color: rgb(0, 0, 0);"></i></a>
