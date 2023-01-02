@@ -93,13 +93,19 @@
                     <img data-bind="attr:{'src': Photo}" class="card-img-top" alt="..." style="height: 350px">
                     <!-- /ko -->
                     <!-- ko ifnot: Photo -->
-                    <img src="./athlete_avatar.png" class="card-img-top" alt="Athlete" style="height: 300px"/>
+                    <img src="./img/athlete_avatar.png" class="card-img-top" alt="Athlete" style="height: 300px"/>
                     <!-- /ko -->
                     <div class="card-body" style="text-align: center;">
                         <h5 class="card-title" data-bind="text:Name"></h5>
                         <button type="button" data-bs-toggle="modal" data-bs-target="#athleteModal" style="border: none; padding: 0px; background: none;">
-                            <i class="fa-sharp fa-solid fa-eye btn " style="color: rgb(0, 0, 0);"></i>
+                            <a href="#" data-bind="">
+                                <i class="fa-sharp fa-solid fa-eye btn " style="color: rgb(0, 0, 0);"></i>
+                            </a>
                         </button>
+
+                        <a href="#" data-bind="click:function(data,event){$parent.updateFavourites(Id)},attr: { id: 'favourite' + Id}">
+                            <i class="fa-solid fa-heart" style="color:red"></i>
+                        </a>
 
                         <div class="modal fade" id="athleteModal "tabindex="-1" aria-labelledby="athleteModal" aria-hidden="true">
                             <div class="modal-dialog">
@@ -116,10 +122,6 @@
                                 </div>
                             </div>
                         </div>
-
-                        <a href="#" data-bind="click:function(data,event){$parent.updateFavourites(Id)},attr: { id: 'favourite' + Id}">
-                            <i class="fa-solid fa-heart" style="color:red"></i>
-                        </a>
                     </div>
                 </div>
 
