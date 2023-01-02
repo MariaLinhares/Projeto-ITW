@@ -12,6 +12,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/fontawesome.min.css" integrity="sha512-giQeaPns4lQTBMRpOOHsYnGw1tGVzbAIHUyHRgn7+6FmiEgGGjaG0T2LZJmAPMzRCl+Cug0ItQ2xDZpTmEc+CQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="myCSS.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        .activated {
+            background-color: red;
+        }
+    </style>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
@@ -88,13 +93,30 @@
         <!-- /ko -->
         <div class="row" data-bind="foreach:records">
             <div class="col-12 col-sm-6 col-md-3 mb-3">
-                <div class="card" style="height: 450px;">
+                <div class="card" style="height: 400px;">
                     <!-- ko if: Photo-->
-                    <img data-bind="attr:{'src': Photo}" class="card-img-top" alt="..." style="height: 350px">
+                    <img data-bind="attr:{'src': Photo}" class="card-img-top" alt="" style="height: 300px">
                     <!-- /ko -->
                     <!-- ko ifnot: Photo -->
-                    <img src="./img/athlete_avatar.png" class="card-img-top" alt="Athlete" style="height: 300px"/>
+                    <img src="./img/athlete_avatar.png" class="card-img-top" alt="" style="height: 300px"/>
                     <!-- /ko -->
+                    <!--Modal-->
+                    <div id="athleteModal" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="athleteModal" aria-hidden="true">
+                        <div class="modal-dialog modal-lg modal-dialog-centered" >
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" data-bind="text: Name"></h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body row">
+                                    <img data-bind="attr:{'src':Photo}" style="height: 300px; width: 250px;"></img>
+                                    <p data-bind="text:Sex">Sex: </p>
+                                    <p data-bind="text:BestPosition">Best Position: </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--/Modal-->
                     <div class="card-body" style="text-align: center;">
                         <h5 class="card-title" data-bind="text:Name"></h5>
                         <button type="button" data-bs-toggle="modal" data-bs-target="#athleteModal" style="border: none; padding: 0px; background: none;">
@@ -102,30 +124,12 @@
                                 <i class="fa-sharp fa-solid fa-eye btn " style="color: rgb(0, 0, 0);"></i>
                             </a>
                         </button>
-
-                        <a href="#" data-bind="click:function(data,event){$parent.updateFavourites(Id)},attr: { id: 'favourite' + Id}">
-                            <i class="fa-solid fa-heart" style="color:red"></i>
-                        </a>
-
-                        <div class="modal fade" id="athleteModal "tabindex="-1" aria-labelledby="athleteModal" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" data-bind="Name"></h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <img data-bind="Photo"></img>
-                                        <p data-bind="Sex">Sex: </p>
-                                        <p data-bind="BestPosition">Best Position: </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <button type="button" class="col-12 col-sm-4 btn btn-outline-none" 
+                                data-bind="click: $parent.updateFavourites.bind($data,Id), attr:{id:'fav'+Id}"> 
+                                <i class="far fa-heart"></i>
+                        </button>
                     </div>
                 </div>
-
-                
             </div>
         </div>
     </div>

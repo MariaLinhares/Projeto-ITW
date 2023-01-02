@@ -14,6 +14,11 @@ var vm = function () {
     self.totalRecords = ko.observable(50);
     self.hasPrevious = ko.observable(false);
     self.hasNext = ko.observable(false);
+    self.favourites = {
+        athletes: []
+    };
+
+
     self.previousPage = ko.computed(function () {
         return self.currentPage() * 1 - 1;
     }, self);
@@ -57,41 +62,35 @@ var vm = function () {
             self.pagesize(data.PageSize)
             self.totalPages(data.TotalPages);
             self.totalRecords(data.TotalRecords);
-            //self.SetFavourites();
+            self.loadFavourites();
         });
-        self.favourites = {
-            athletes: [],
-            games: [],
-            }; 
-        
-            self.loadFavourites = function(){
-                if (localStorage.getItem('favourites') != null){
-                    self.favourites = JSON.parse(localStorage.favourites)
-                } else {
-                    localStorage.setItem('favourites', JSON.stringify(self.favourites));
-                };
-        
-                let Favoritos = self.favourites.athletes;
-        
-                Favoritos.forEach(id => {
-                    $("#favourite_"+id).css('color','red');
-                });
-            }
-        
-            self.updateFavourites = function(id){
-                let index = Favoritos.indexOf(String(id))
-                if(index !== -1){
-                    $("#favourite_"+id).css('color', '#333')
-                    Favoritos.splice(index, 1)
-                } else if(index == -1){
-                    $("#favourite_"+id).css('color', 'red')
-                    Favoritos.push(String(id))
-                };
-                console.log(Favoritos)
-                console.log(self.favourites);
-                window.localStorage.setItem('favourites', JSON.stringify(self.favourites))
-            };
     };
+
+   
+
+    self.loadFavourites = function () {
+        if (localStorage.getItem('favourites') != null) {
+            self.favourites = JSON.parse(localStorage.favourites)
+        } else {
+            localStorage.setItem('favourites', JSON.stringify(self.favourites));
+        };
+        self.favourites.athletes.forEach(id => {
+            $("#fav" + id+" i").css('color', 'red');
+        });
+    }
+    
+
+    self.updateFavourites = function (id) {
+        if (self.favourites.athletes.includes(id)) {
+            self.favourites.athletes = self.favourites.athletes.filter(item => item !== id);    
+        } else {
+            self.favourites.athletes.push(id);
+        }
+
+        $("#fav" + id+" i").toggleClass('activated');
+        
+        localStorage.setItem('favourites', JSON.stringify(self.favourites));
+    }
 
     //--- Internal functions
     function ajaxHelper(uri, method, data) {
