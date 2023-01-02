@@ -88,12 +88,12 @@
         <!-- /ko -->
         <div class="row" data-bind="foreach:records">
             <div class="col-12 col-sm-6 col-md-3 mb-3">
-                <div class="card" >
+                <div class="card" style="height: 450px;">
                     <!-- ko if: Photo-->
-                    <img data-bind="attr:{'src': Photo}" class="card-img-top" alt="..." style="height: 300px">
+                    <img data-bind="attr:{'src': Photo}" class="card-img-top" alt="..." style="height: 350px">
                     <!-- /ko -->
                     <!-- ko ifnot: Photo -->
-                    <img src="./athlete_avatar.png" class="card-img-top" alt="Athlete" />
+                    <img src="./athlete_avatar.png" class="card-img-top" alt="Athlete" style="height: 300px"/>
                     <!-- /ko -->
                     <div class="card-body" style="text-align: center;">
                         <h5 class="card-title" data-bind="text:Name"></h5>
