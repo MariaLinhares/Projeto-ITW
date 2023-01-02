@@ -3,6 +3,7 @@ var vm = function () {
     console.log('ViewModel initiated...');
     //---Variáveis locais
     var self = this;
+    self.athleteData = ko.observable()
     self.baseUri = ko.observable('http://192.168.160.58/Olympics/api/athletes');
     //self.baseUri = ko.observable('http://localhost:62595/api/drivers');
     self.displayName = 'Olympic athletes editions List';
@@ -53,7 +54,6 @@ var vm = function () {
         console.log('CALL: getGames...');
         var composedUri = self.baseUri() + "?page=" + id + "&pageSize=" + self.pagesize();
         ajaxHelper(composedUri, 'GET').done(function (data) {
-            console.log(data);
             hideLoading();
             self.records(data.Records);
             self.currentPage(data.CurrentPage);
@@ -91,6 +91,25 @@ var vm = function () {
         
         localStorage.setItem('favourites', JSON.stringify(self.favourites));
     }
+    
+    self.loadAthleteModal = function (id) {
+        if (id !== undefined) {
+            
+            $.ajax({
+                type: "GET",
+                url: "http://192.168.160.58/Olympics/api/athletes" + id,
+                success: function (data) {
+                    data.img = findImage(data.Id)
+                    console.log(data.img)
+                    self.athleteData(data)
+                },
+            })
+            $("#AthleteModal").modal("show")
+        } else {
+            self.athleteData(undefined)
+        }
+    }
+    console.log(self.records());
 
     //--- Internal functions
     function ajaxHelper(uri, method, data) {

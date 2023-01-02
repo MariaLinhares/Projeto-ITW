@@ -100,10 +100,12 @@
                     <!-- ko ifnot: Photo -->
                     <img src="./img/athlete_avatar.png" class="card-img-top" alt="" style="height: 300px"/>
                     <!-- /ko -->
+
+
                     <!--Modal-->
-                    <div id="athleteModal" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="athleteModal" aria-hidden="true">
+                    <div id="AthleteModal" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="AthleteModal" aria-hidden="true">
                         <div class="modal-dialog modal-lg modal-dialog-centered" >
-                            <div class="modal-content">
+                            <div class="modal-content" >
                                 <div class="modal-header">
                                     <h5 class="modal-title" data-bind="text: Name"></h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -117,12 +119,12 @@
                         </div>
                     </div>
                     <!--/Modal-->
+
+
                     <div class="card-body" style="text-align: center;">
                         <h5 class="card-title" data-bind="text:Name"></h5>
-                        <button type="button" data-bs-toggle="modal" data-bs-target="#athleteModal" style="border: none; padding: 0px; background: none;">
-                            <a href="#" data-bind="">
+                        <button type="button" data-bs-toggle="modal" data-bs-target="#AthleteModal" style="border: none; padding: 0px; background: none;" >
                                 <i class="fa-sharp fa-solid fa-eye btn " style="color: rgb(0, 0, 0);"></i>
-                            </a>
                         </button>
                         <button type="button" class="col-12 col-sm-4 btn btn-outline-none" 
                                 data-bind="click: $parent.updateFavourites.bind($data,Id), attr:{id:'fav'+Id}"> 
