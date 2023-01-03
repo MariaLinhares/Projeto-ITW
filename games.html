@@ -10,8 +10,8 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap.min.css" integrity="sha512-SbiR/eusphKoMVVXysTKG/7VseWii+Y3FdHrt0EpKgpToZeemhqHeZeLWLhJutz/2ut2Vw1uQEj2MbRF+TVBUA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/fontawesome.min.css" integrity="sha512-giQeaPns4lQTBMRpOOHsYnGw1tGVzbAIHUyHRgn7+6FmiEgGGjaG0T2LZJmAPMzRCl+Cug0ItQ2xDZpTmEc+CQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="myCSS.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="myCSS.css" />
 
 </head>
 <body>
@@ -58,14 +58,15 @@
 
                 <li class="d-flex form-inline" style="right: 5%; position: absolute;">
                     <div class="nav-item form-inline" style="margin: auto; padding-right: 10px;">
-                        <a href="perfil.html"> <i class="fa-regular fa-heart text-danger"></i> </a>
-                    </div>
-                    <form class="d-flex" role="search">
-                        <input class="form-control" type="search" placeholder="Search for Games" aria-label="Search">
-                        <button class="btn btn-outline-secondary btn-sm" type="submit"><i
-                            class="fa-solid fa-magnifying-glass"></i></button>
-                    </form>
+                        <a href="favs.html"> <i class="fa-regular fa-heart text-danger"></i> </a>
+                    </div>            
                 </li>
+                <ul class="nav-item">
+                    <li class="nav-item d-flex"> 
+                        <input id="searchArgs" class="form-control me-2 btn-outline-secondary" type="text" placeholder="Search" aria-label="Search" name="searchbar" >
+                        <button class="btn btn-outline-secondary fa fa-search" type="submit" id="search01" style="margin: 0 0 0 20px; border-style:none ;" onclick="search()"></button>
+                    </li>
+                </ul>
             </ul>
         </div>
     </nav>
@@ -145,6 +146,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.bundle.min.js" integrity="sha512-i9cEfJwUwViEPFKdC1enz4ZRGBj8YQo6QByFTF92YXHi7waCqyexvRD75S5NVTsSiTv7rKWqG9Y5eFxmRsOn0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.1/knockout-latest.min.js" integrity="sha512-vs7+jbztHoMto5Yd/yinM4/y2DOkPLt0fATcN+j+G4ANY2z4faIzZIOMkpBmWdcxt+596FemCh9M18NUJTZwvw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.min.js " integrity="sha256-hlKLmzaRlE8SCJC1Kw8zoUbU8BxA+8kR3gseuKfMjxA=" crossorigin=" anonymous "></script>
     <script src="games.js"></script>
 </body>
 </html>

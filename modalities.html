@@ -10,8 +10,9 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap.min.css" integrity="sha512-SbiR/eusphKoMVVXysTKG/7VseWii+Y3FdHrt0EpKgpToZeemhqHeZeLWLhJutz/2ut2Vw1uQEj2MbRF+TVBUA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/fontawesome.min.css" integrity="sha512-giQeaPns4lQTBMRpOOHsYnGw1tGVzbAIHUyHRgn7+6FmiEgGGjaG0T2LZJmAPMzRCl+Cug0ItQ2xDZpTmEc+CQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="myCSS.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="jquery-ui.css">
+    <link rel="stylesheet" href="myCSS.css" />
 
 </head>
 <body>
@@ -105,7 +106,7 @@
                 <img data-bind="attr:{'src':Photo}" class="card-img-top" alt="..." style="height: 200px">
                 <div class="card-body" style="text-align: center;">
                     <h5 class="card-title" data-bind="text:Name"></h5>
-                    <a href="#"><i class="fa-solid fa-heart" style="color:red"></i></a>
+                    <a href="#" id="favs"><i class="fa-solid fa-heart" style="color:red"></i></a>
                 </div>
             </div>
         </div>
