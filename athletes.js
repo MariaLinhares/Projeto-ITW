@@ -15,9 +15,7 @@ var vm = function () {
     self.totalRecords = ko.observable(50);
     self.hasPrevious = ko.observable(false);
     self.hasNext = ko.observable(false);
-    self.favourites = {
-        athletes: []
-    };
+    self.favourites = ko.observable([])
     //--- Data Record
     self.Id = ko.observable('');
     self.Name = ko.observable('');
@@ -63,7 +61,29 @@ var vm = function () {
             list.push(i + step);
         return list;
     };
-    
+
+    self.toggleFavourite = function (id) {
+        if (self.favourites.indexOf(id) == -1) {
+            self.favourites.push(id);
+        }
+        else {
+            self.favourites.remove(id);
+        }
+        localStorage.setItem("fav", JSON.stringify(self.favourites()));
+    };
+
+    self.SetFavourites = function () {
+        let storage;
+        try {
+            storage = JSON.parse(localStorage.getItem("fav"));
+        }
+        catch (e) {
+            ;
+        }
+        if (Array.isArray(storage)) {
+            self.favourites(storage);
+        }
+    };
 
 
     //--- Page Events
@@ -79,7 +99,7 @@ var vm = function () {
             self.pagesize(data.PageSize)
             self.totalPages(data.TotalPages);
             self.totalRecords(data.TotalRecords);
-            self.loadFavourites();
+            self.SetFavourites();
 
             self.Games(data.Games);
             self.Modalities(data.Modalities);
@@ -89,30 +109,8 @@ var vm = function () {
     };
 
    
-
-    self.loadFavourites = function () {
-        if (localStorage.getItem('favourites') != null) {
-            self.favourites = JSON.parse(localStorage.favourites)
-        } else {
-            localStorage.setItem('favourites', JSON.stringify(self.favourites));
-        };
-        self.favourites.athletes.forEach(id => {
-            $("#fav" + id+" i").css('color', 'red');
-        });
-    }
     
-
-    self.updateFavourites = function (id) {
-        if (self.favourites.athletes.includes(id)) {
-            self.favourites.athletes = self.favourites.athletes.filter(item => item !== id);    
-        } else {
-            self.favourites.athletes.push(id);
-        }
-
-        $("#fav" + id+" i").toggleClass('activated');
-        
-        localStorage.setItem('favourites', JSON.stringify(self.favourites));
-    }
+    
     
     self.loadAthleteModal = function (id) {
         if (id !== undefined) {
