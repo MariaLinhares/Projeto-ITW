@@ -56,16 +56,16 @@
                 </li>
 
 
-                <li class="d-flex form-inline" style="right: 5%; position: absolute;">
-                    <div class="nav-item form-inline" style="margin: auto; padding-right: 10px;">
-                        <a href="favs.html"> <i class="fa-regular fa-heart text-danger"></i> </a>
-                    </div>
-                    <form class="d-flex" role="search">
-                        <input class="form-control" type="search" placeholder="Search for Countries" aria-label="Search">
-                        <button class="btn btn-outline-secondary btn-sm" type="submit"><i
-                            class="fa-solid fa-magnifying-glass"></i></button>
-                    </form>
+                <li class="nav-item" style="margin: auto; padding-left: 7px;">
+                    <a href="favs.html"> <i class="fa-regular fa-heart text-danger"></i> </a>                    
                 </li>
+
+                <ul class="nav-item" style="position: absolute; right: 5%;">
+                    <li class="nav-item d-flex"> 
+                        <input id="searchArgs" class="form-control me-2 btn-outline-secondary" type="text" placeholder="Search" aria-label="Search" name="searchbar" >
+                        <button class="btn btn-outline-secondary fa fa-search" type="submit" id="search01" style="margin: 0 0 0 px; border-style:none; padding: 0px;" onclick="search()"></button>
+                    </li>
+                </ul>
             </ul>
         </div>
     </nav>
