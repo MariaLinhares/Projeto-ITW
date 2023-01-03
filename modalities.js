@@ -89,6 +89,65 @@ var vm = function () {
             keyboard: false
         });
     }
+
+    search = function() {
+        console.log("CALL: search...");
+        var api = 'http://192.168.160.58/Olympics/api/Modalities/SearchByName?q=' + $("#searchArgs").val();
+        self.athletesList = [];
+        ajaxHelper(api, 'GET').done(function(data) {
+            console.log(data);
+            showLoading();
+            self.records(data);
+            $('#pagination').addClass("d-none");
+            $('#line').addClass("d-none");
+            self.TotalRecords(data.length);
+            hideLoading();
+            for (var info in data){
+                self.athletesList.push(data[info]);
+            }
+        });
+    }
+
+    $("#searchArgs").autocomplete({ 
+        minLength: 2,
+        source: function(request, response) {
+            $.ajax({
+                type: "GET",
+                url : "http://192.168.160.58/Olympics/api/Modalities/SearchByName",
+                data: { 
+                    q: $('#searchArgs').val().toLowerCase()
+                },
+                success: function(data) {
+                    if (!data.length) {
+                        var result = [{
+                            label: 'No results found.',
+                            value: response.term,
+                            source: " "
+                        }];
+                        response(result);
+                    } else {
+                        var nData = $.map(data, function(value, key){
+                            return {
+                                label: value.Name,
+                                value: value.Id,
+                                source: "SearchByName"
+                            }
+                        });
+                        results = $.ui.autocomplete.filter(nData, request.term);
+                        response(results);
+                    }
+                },
+                error: function(){
+                    alert("error");
+                }
+            }) 
+        },
+        select: function(event, ui) {
+           window.location.href = "./ModalidadesDetails.html?id=" + ui.item.value;
+        },
+    });
+    
+
     function hideLoading() {
         $('#myModal').on('shown.bs.modal', function (e) {
             $("#myModal").modal('hide');
@@ -109,7 +168,7 @@ var vm = function () {
             }
         }
     };
-
+   
     //--- start ....
     showLoading();
     var pg = getUrlParameter('page');
