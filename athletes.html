@@ -121,7 +121,7 @@
         <!-- /ko -->
         <div class="row" data-bind="foreach:records">
             <div class="col-12 col-sm-6 col-md-3 mb-3">
-                <div class="card" style="height: 400px;">
+                <div class="card" style="height: 100%;">
                     <!-- ko if: Photo-->
                     <img data-bind="attr:{'src': Photo}" class="card-img-top" alt="" style="height: 300px">
                     <!-- /ko -->
@@ -138,11 +138,11 @@
                         <button type="button" data-bs-toggle="modal" data-bs-target="#AthleteModal"
                             style="border: none; padding: 0px; background: none;"
                             data-bind="click: $parent.loadAthleteModal.bind($data, Id) ">
-                            <i class="fa-sharp fa-solid fa-eye btn " style="color: rgb(0, 0, 0);"></i>
+                            <i class="fa-sharp fa-solid fa-eye btn" style="color: rgb(0, 0, 0);"></i>
                         </button>
                         <button type="button" class="col-12 col-sm-4 btn btn-outline-none"
                             data-bind="click: $parent.updateFavourites.bind($data,Id), attr:{id:'fav'+Id}">
-                            <i class="far fa-heart"></i>
+                            <i class="far fa-heart";></i>
                         </button>
                     </div>
                 </div>
@@ -180,14 +180,14 @@
     <!--Modal-->
     <div id="AthleteModal" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog"
         aria-labelledby="AthleteModal" aria-hidden="true">
-        <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
             <div class="modal-content" data-bind="with:athleteData">
                 <div class="modal-header">
-                    <h5 class="modal-title" data-bind="text:Name"></h5>
+                    <h4 class="modal-title" data-bind="text:Name" style="font-weight: bold;"></h4>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="row modal-body ">
-                    <div class="col-3">
+                    <div class="col-3" style="margin: auto;">
                         <!--ko if: Photo-->
                         <img data-bind="attr:{'src':Photo}" style="height: 175px; width: 100%;"></img>
                         <!--/ko-->
@@ -196,16 +196,17 @@
                         <!--/ko-->
                     </div>
                     <div class="col-9" >
-                        <p>Sex: <span data-bind="text:Sex"></span></p>
-                        <p>Height: <span data-bind="text:Height"></span></p>
-                        <p>Weight: <span data-bind="text:Weight"></span></p>
-                        <p>Birthday: <span data-bind="text:BornDate"></span></p>
-                        <p>Place of Birth: <span data-bind="text: BornPlace"></span></p>
+                        <p style="font-weight: bold;">Sex: <span data-bind="text:Sex" style="font-weight:lighter ;"></span></p>
+                        <p style="font-weight: bold;">Height (cm): <span data-bind="text:Height" style="font-weight:lighter ;"></span></p>
+                        <p style="font-weight: bold;">Weight (kg): <span data-bind="text:Weight" style="font-weight:lighter ;"></span></p>
+                        <p style="font-weight: bold;">Birthday: <span data-bind="text:BornDate" style="font-weight:lighter ;"></span></p>
+                        <p style="font-weight: bold;">Place of Birth: <span data-bind="text: BornPlace" style="font-weight:lighter ;"></span></p>
+                        <p style="font-weight: bold; margin-bottom: 0px;">More info:</p>
                         <a data-bind="text:OlympediaLink, attr:{href:OlympediaLink}"></a>
                     </div>
-                    <div class="col-12">
-                        <h3>Games Participated</h3>
-                        <span data-bind="Games"></span>
+                    <div class="col-12" style="margin-top: 30px; border-top: solid 1px #dee2e6;padding-top: 20px ;">
+                        <h4 style="font-weight: bold;">Games Participated</h4>
+                        <p data-bind="text:Games.Name"></p>
                     </div>
                 </div>
             </div>
