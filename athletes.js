@@ -18,7 +18,22 @@ var vm = function () {
     self.favourites = {
         athletes: []
     };
-
+    //--- Data Record
+    self.Id = ko.observable('');
+    self.Name = ko.observable('');
+    self.Sex = ko.observable('');
+    self.Height = ko.observable('');
+    self.Weight = ko.observable('');
+    self.BornDate = ko.observable('');
+    self.BornPlace = ko.observable('');
+    self.DiedDate = ko.observable('');
+    self.DiedPlace = ko.observable('');
+    self.Photo = ko.observable('');
+    self.OlympediaLink = ko.observable('');
+    self.Games = ko.observableArray([]);
+    self.Modalities = ko.observableArray([]);
+    self.Competitions = ko.observableArray([]);
+    self.Medals = ko.observableArray([]);
 
     self.previousPage = ko.computed(function () {
         return self.currentPage() * 1 - 1;
@@ -48,6 +63,8 @@ var vm = function () {
             list.push(i + step);
         return list;
     };
+    
+
 
     //--- Page Events
     self.activate = function (id) {
@@ -63,6 +80,11 @@ var vm = function () {
             self.totalPages(data.TotalPages);
             self.totalRecords(data.TotalRecords);
             self.loadFavourites();
+
+            self.Games(data.Games);
+            self.Modalities(data.Modalities);
+            self.Competitions(data.Competitions);
+            self.Medals(data.Medals);
         });
     };
 
@@ -97,10 +119,9 @@ var vm = function () {
             
             $.ajax({
                 type: "GET",
-                url: "http://192.168.160.58/Olympics/api/athletes" + id,
+                url: "http://192.168.160.58/Olympics/api/Athletes/FullDetails?id=" + id,
                 success: function (data) {
-                    data.img = findImage(data.Id)
-                    console.log(data.img)
+                    console.log(data);
                     self.athleteData(data)
                 },
             })
