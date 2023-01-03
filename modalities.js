@@ -142,9 +142,6 @@ var vm = function () {
                 }
             }) 
         },
-        select: function(event, ui) {
-           window.location.href = "./ModalidadesDetails.html?id=" + ui.item.value;
-        },
     });
     
 
