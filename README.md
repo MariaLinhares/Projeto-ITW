@@ -4,6 +4,7 @@ Este trabalho contém os seguintes componentes:
 -> Autocomplete
 -> Cards
 -> Modal
+-> Tabs
 -> Navegação por página
 -> LocalStorage para os favoritos
 -> Carrossel
