@@ -136,10 +136,10 @@
                         <button type="button" data-bs-toggle="modal" data-bs-target="#AthleteModal"
                             style="border: none; padding: 0px; background: none;"
                             data-bind="click: $parent.loadAthleteModal.bind($data, Id) ">
-                            <i class="fa-sharp fa-solid fa-eye btn" style="color: rgb(0, 0, 0);"></i>
+                            <i class="fa-sharp fa-solid fa-eye btn" style="color: rgb(0, 0, 0); font-size: x-large;"></i>
                         </button>
                         <button data-bind="click: () => $parent.toggleFavourite(Id), attr : { 'id': 'favourite_' + Id }" id="heartbt" class="btn btn-favourite">
-                            <i style="font-size: x-large;" data-bind="attr: {'class': $parent.favourites().includes(Id)? 'fa fa-heart text-danger' : 'fa-regular fa-heart'}" title="Selecione para adicionar aos favoritos"></i>
+                            <i style="font-size: x-large;" data-bind="attr: {'class': $parent.favourites().includes(Id)? 'fa fa-heart text-danger' : 'fa-regular fa-heart'}" title="Selecione para adicionar aos favoritos" style="color: rgb(0, 0, 0);"></i>
                         </button>
                     </div>
                 </div>
