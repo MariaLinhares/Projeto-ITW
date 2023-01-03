@@ -123,6 +123,11 @@ var vm = function () {
                 success: function (data) {
                     console.log(data);
                     self.athleteData(data)
+                const date = new Date('BornDate');
+                const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
+                const readableDate = date.toLocaleDateString('en-US', options);
+                console.log(readableDate); // Output: "08-05-1969"
+
                 },
             })
             $("#AthleteModal").modal("show")

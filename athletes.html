@@ -183,7 +183,7 @@
         <div class="modal-dialog modal-lg modal-dialog-centered">
             <div class="modal-content" data-bind="with:athleteData">
                 <div class="modal-header">
-                    <h5 class="modal-title" data-bind="text: Name"></h5>
+                    <h5 class="modal-title" data-bind="text:Name"></h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="row modal-body ">
@@ -196,10 +196,16 @@
                         <!--/ko-->
                     </div>
                     <div class="col-9" >
-                        <p>Sex:<span data-bind="text:Sex"></span></p>
-                        <p data-bind="text:Height">Height:</p>
-                        <p data-bind="text:Weight">Weight:</p>
-                        <p data-bind="text:BornDate">Birthday:</p>
+                        <p>Sex: <span data-bind="text:Sex"></span></p>
+                        <p>Height: <span data-bind="text:Height"></span></p>
+                        <p>Weight: <span data-bind="text:Weight"></span></p>
+                        <p>Birthday: <span data-bind="text:BornDate"></span></p>
+                        <p>Place of Birth: <span data-bind="text: BornPlace"></span></p>
+                        <a data-bind="text:OlympediaLink, attr:{href:OlympediaLink}"></a>
+                    </div>
+                    <div class="col-12">
+                        <h3>Games Participated</h3>
+                        <span data-bind="Games"></span>
                     </div>
                 </div>
             </div>
