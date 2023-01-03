@@ -199,7 +199,69 @@
         </div>
     </div>
 
+    <div class="container">
+        <!--FORM-->
 
+
+        <h3>Sugestões</h3>
+        <hr style="height:2px;border-width:0;color:gray;background-color:gray">
+
+        <form class="needs-validation" name="FichaInscricao" novalidate method="POST">
+            <div class="row form-group">
+                <label for="Nome" class="col-md-2 col-form-label">Nome</label>
+                <div class="col-md-8">
+                    <input type="text" name="Nome" id="nome" class="form-control" minlength="8" maxlength="100"
+                        placeholder="Zé Cabra" required data-bind="value:nome" autocomplete="off" />
+                    <div class="invalid-feedback">Nome Inválido</div>
+                    <div class="valid-feedback">Nome Válido</div>
+                </div>
+            </div>
+            <div class="row form-group">
+                <label for="Email" class="col-md-2 col-form-label">Email</label>
+                <div class="col-md-8">
+                    <input type="email" class="form-control" id="email" placeholder="example@ua.pt" autocomplete="off"
+                        data-bind="value:email" required>
+                    <div class="invalid-feedback">Email Inválido</div>
+                    <div class="valid-feedback">Email Válido</div>
+                </div>
+            </div>
+
+            <div class="row form-group">
+                <label for="sugestão" class="col-md-2 col-form-label">Sugestão</label>
+                <div class="col-md-8">
+                    <textarea class="form-control" id="comentario" rows="3" minlength="15" maxlength="200"
+                        placeholder="Coloca aqui a tua sugestão" data-bind="textInput:comentario" required></textarea>
+                    <div class="invalid-feedback">Comentário muito curto</div>
+                    <div class="valid-feedback">Comentário muito fixe!</div>
+                </div>
+            </div>
+
+            <div class="row form-group">
+                <div class="col-md-6 offset-md-2">
+                    <input type="Submit" name="submitBtn" value="Enviar" class="btn btn-danger" />
+                    <input type="reset" name="resetBtn" value="Limpar" class="btn btn-secondary"
+                        data-bind="click:reset" />
+                </div>
+            </div>
+        </form>
+
+        <!--TABLE-->
+        <table class="table table-hover">
+            <tr>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Comentário</th>
+            </tr>
+            <tbody data-bind="foreach:comentarios">
+                <tr>
+                    <td data-bind="text:nome"></td>
+                    <td data-bind="text:email"></td>
+                    <td data-bind="text:comentario"></td>
+                </tr>
+            </tbody>
+        </table>
+        <!--/TABLE-->
+    </div>
 
 
 
@@ -216,6 +278,7 @@
             </div>
         </div>
     </footer>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
         integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -226,6 +289,69 @@
         integrity="sha512-vs7+jbztHoMto5Yd/yinM4/y2DOkPLt0fATcN+j+G4ANY2z4faIzZIOMkpBmWdcxt+596FemCh9M18NUJTZwvw=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="myScript.js"></script>
+
+    <script>
+        function Sugestoes() {
+            var self = this
+            self.nome = ko.observable()
+            self.email = ko.observable()
+            self.comentario = ko.observable()
+            self.comentarios = ko.observableArray()
+
+            self.submeter = function () {
+                var obj = {}
+                obj.nome = self.nome()
+                obj.email = self.email()
+                obj.comentario = self.comentario()
+                self.comentarios.push(obj)
+                console.log(self.comentarios())
+                self.updateLocalStorage("comentarios", self.comentarios())
+            }
+            self.updateLocalStorage = (key, data) => {
+                localStorage.setItem(key, JSON.stringify(data))
+            }
+
+            self.reset = function () {
+                self.classificacao(8)
+            }
+
+            self.init = function () {
+                if (localStorage.getItem("comentarios") !== null) {
+                    self.comentarios(JSON.parse(localStorage.getItem("comentarios")))
+
+                } else {
+                    self.comentarios([])
+                }
+            }
+            self.init()
+        }
+
+
+        s = new Sugestoes
+        ko.applyBindings(s)
+    </script>
+
+    <script>
+        (function () {
+            'use strict';
+            window.addEventListener('load', function () {
+                // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                var forms = document.getElementsByClassName('needs-validation');
+                // Loop over them and prevent submission
+                var validation = Array.prototype.filter.call(forms, function (form) {
+                    form.addEventListener('submit', function (event) {
+                        event.preventDefault();
+                        if (form.checkValidity() === false) {
+                            event.stopPropagation();
+                        } else {
+                            s.submeter()
+                        }
+                        form.classList.add('was-validated');
+                    }, false);
+                });
+            }, false);
+        })();
+    </script>
 </body>
 
 </html>
