@@ -4,7 +4,7 @@ var vm = function () {
     //---Variáveis locais
     var self = this;
     self.athleteData = ko.observable()
-    self.baseUri = ko.observable('http://192.168.160.58/Olympics/api/athletes');
+    self.baseUri = ko.observable('http://192.168.160.58/Olympics/api/Athletes');
     //self.baseUri = ko.observable('http://localhost:62595/api/drivers');
     self.displayName = 'Olympic athletes editions List';
     self.error = ko.observable('');
