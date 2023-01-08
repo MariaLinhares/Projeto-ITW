@@ -100,7 +100,6 @@ var vm = function () {
             self.totalPages(data.TotalPages);
             self.totalRecords(data.TotalRecords);
             self.SetFavourites();
-
             self.Games(data.Games);
             self.Modalities(data.Modalities);
             self.Competitions(data.Competitions);
