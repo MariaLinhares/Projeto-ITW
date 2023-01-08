@@ -15,3 +15,7 @@ Este trabalho contém os seguintes componentes:
 -> Tabela para guardar os dados inseridos no formulário que posteriormente ficam guardados no LocalStorage
 -> Footer
 -> Gráficos para mostrar algumas estatísticas da API (Google Charts)
+
+*Alterações após primeira entrega*
+
+-> Mapas 

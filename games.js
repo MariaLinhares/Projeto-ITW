@@ -10,6 +10,7 @@ var vm = function () {
     self.passingMessage = ko.observable('');
     self.records = ko.observableArray([]);
     self.currentPage = ko.observable(1);
+    self.favourites = ko.observableArray([]);
     self.pagesize = ko.observable(20);
     self.totalRecords = ko.observable(50);
     self.hasPrevious = ko.observable(false);
@@ -43,6 +44,28 @@ var vm = function () {
         return list;
     };
 
+    self.toggleFavourite = function (id) {
+        if (self.favourites.indexOf(id) == -1) {
+            self.favourites.push(id);
+        }
+        else {
+            self.favourites.remove(id);
+        }
+        localStorage.setItem("fav4", JSON.stringify(self.favourites()));
+    };
+
+    self.SetFavourites = function () {
+        let storage;
+        try {
+            storage = JSON.parse(localStorage.getItem("fav4"));
+        }
+        catch (e) {
+            ;
+        }
+        if (Array.isArray(storage)) {
+            self.favourites(storage);
+        }
+    };
     //--- Page Events
     self.activate = function (id) {
         console.log('CALL: getGames...');
@@ -57,7 +80,7 @@ var vm = function () {
             self.pagesize(data.PageSize)
             self.totalPages(data.TotalPages);
             self.totalRecords(data.TotalRecords);
-            //self.SetFavourites();
+            self.SetFavourites();
         });
     };
 
