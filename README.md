@@ -10,12 +10,10 @@ Este trabalho contém os seguintes componentes:
 -> Carrossel
 -> Font Awesome para a navbar
 -> Imagens dos atletas, competições, paises, jogos e modalidades (os que não têm imagem ficam com uma default)
--> Pesquisa com selectMenu(jQuery UI) por tipo
 -> Formulário de sugestões 
 -> Tabela para guardar os dados inseridos no formulário que posteriormente ficam guardados no LocalStorage
 -> Footer
 -> Gráficos para mostrar algumas estatísticas da API (Google Charts)
 
 *Alterações após primeira entrega*
-
 -> Mapas 
